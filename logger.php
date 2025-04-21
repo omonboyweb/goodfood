@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 function getUserIP() {
     $headers = [
         'HTTP_CLIENT_IP',
@@ -27,10 +29,10 @@ $ip = getUserIP();
 $time = date("Y-m-d H:i:s");
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-// Log yozish
+// Logga yozish
 $log = "Time: $time | IP: $ip | User-Agent: $user_agent\n";
 file_put_contents(__DIR__ . "/logs.txt", $log, FILE_APPEND);
 
-// Javob qaytarish
+// JSON javob
 echo json_encode(["status" => "logged"]);
 ?>
